@@ -1,0 +1,149 @@
+/* .sessao{
+    background-color: #666;
+    padding: 30px;
+} */
+
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --color-primary: #8f44fd;
+    --tab-width: 1000px;
+    --button-width: 100px
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: grid;
+    place-items: center;
+    margin: 0;
+    font-family: "Euclid Circular A";
+    line-height: 1.5;
+    background-color: #24262a;
+    color: #f9f9f9;
+}
+
+.widget {
+    background-color: #17181a;
+    width: var(--tab-width);
+    height: 400px;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+input {
+    display: none;
+}
+
+label {    
+    padding: 20px 5px;
+    font-size: 15px;  
+    font-weight: 600;
+    text-align: center;  
+    width: var(--button-width);
+    opacity: 0.50;
+    cursor: pointer;
+}
+label:hover {  
+    background-color: #575757;
+    font-size: 20px; 
+    border-radius: 7px; 
+    opacity: 0.8;  
+    margin: 0;  
+}
+label:active {
+    opacity: 1;    
+    color: green;
+    font-weight: 800;
+    background-color: darkturquoise;    
+}
+
+
+
+.buttons {
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid #575757;
+}
+
+.tabs input:nth-child(1):checked~.buttons .underline {
+    translate: 0 0;
+}
+
+
+.tabs input:nth-child(2):checked~.buttons .underline {
+    translate: var(--button-width) 0;
+}
+
+.tabs input:nth-child(3):checked~.buttons .underline {
+    translate: calc(var(--button-width) * 2) 0;
+}
+
+/* add extra rules for more tabs :) */
+/* adicionar regras extras para mais guias */
+
+.tabs input:nth-child(1):checked ~ 
+.buttons label:nth-child(1),
+.tabs input:nth-child(2):checked ~ 
+.buttons label:nth-child(2),
+.tabs input:nth-child(3):checked ~ 
+.buttons label:nth-child(3){
+    opacity: 1;
+}
+
+.tabs input:nth-child(1):checked ~
+.content > .content-inner{
+    translate: 0 0;
+}
+.tabs input:nth-child(2):checked ~
+.content > .content-inner{
+    translate: calc(0px - var(--tab-width)) 0;
+}
+.tabs input:nth-child(3):checked ~
+.content > .content-inner{
+    translate: calc(0px - var(--tab-width) * 2) 0;
+}
+
+/* add extra rules for more tabs / adicionar regras extras para mais guias */
+
+
+
+/* sublinhado */
+.underline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: 0.2s;
+}
+
+.content {
+    position: relative;
+    overflow: hidden;
+    height: 140px;
+}
+
+.content-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    width: calc(var(--tab-width) * 3);
+    transition: 0.3s;
+}
+
+.content-inner>div {
+    width: inherit;
+    padding: 20px;
+}
+
+
